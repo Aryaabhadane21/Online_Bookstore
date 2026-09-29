@@ -1,0 +1,54 @@
+.auth-view-wrapper {
+  padding: 3.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card-box {
+  max-width: 440px;
+  width: 100%;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-card-head {
+  margin-bottom: 1.75rem;
+}
+
+.auth-card-title {
+  font-size: 1.85rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-main);
+}
+
+.auth-card-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.auth-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.auth-switch-prompt {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.auth-switch-prompt a {
+  color: var(--coral);
+  font-weight: 600;
+}
+
+.auth-switch-prompt a:hover {
+  text-decoration: underline;
+}

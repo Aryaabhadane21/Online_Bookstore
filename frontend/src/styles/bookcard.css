@@ -1,0 +1,112 @@
+.book-item-card {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  transition: transform 0.2s ease;
+}
+
+.book-item-card:hover {
+  transform: translateY(-4px);
+}
+
+.book-card-cover-wrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  margin-bottom: 0.85rem;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-cover);
+  background-color: var(--bg-subtle);
+  transition: box-shadow 0.2s ease;
+}
+
+.book-item-card:hover .book-card-cover-wrap {
+  box-shadow: var(--shadow-cover-hover);
+}
+
+.book-card-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.book-card-cover-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #E6DEC8 0%, #D4C9AF 100%);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.fallback-book-title {
+  font-family: 'Rufina', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+.fallback-book-author {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.book-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.2rem;
+}
+
+.book-card-title:hover {
+  color: var(--coral);
+}
+
+.book-card-author {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.book-card-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.book-price-amount {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.out-of-stock-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--coral);
+  background-color: var(--coral-light);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}

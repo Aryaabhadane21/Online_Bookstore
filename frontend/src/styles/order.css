@@ -1,0 +1,169 @@
+.order-page-wrapper {
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.order-card-panel {
+  max-width: 500px;
+  width: 100%;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  padding: 2.25rem 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.order-card-header {
+  margin-bottom: 1.5rem;
+}
+
+.order-card-title {
+  font-size: 1.85rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-main);
+}
+
+.order-card-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.order-book-summary-box {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.order-book-cover-thumb {
+  width: 65px;
+  aspect-ratio: 2 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow-cover);
+  flex-shrink: 0;
+  background-color: var(--bg-subtle);
+}
+
+.order-book-cover-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb-fallback {
+  width: 100%;
+  height: 100%;
+  background: #E6DEC8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  font-size: 0.65rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.order-book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.order-summary-title {
+  font-family: 'Rufina', serif;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.order-summary-author {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.order-summary-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 0.15rem;
+}
+
+.order-summary-stock {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.stock-ok {
+  color: var(--success);
+}
+
+.stock-out {
+  color: var(--coral);
+}
+
+.order-total-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 1.25rem 0;
+}
+
+.order-total-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.order-total-amount {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--coral);
+}
+
+.order-buttons-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-place-order {
+  flex: 2;
+  padding: 0.75rem;
+}
+
+.order-buttons-group .btn-outline {
+  flex: 1;
+}
+
+.order-success-screen {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.order-success-pill {
+  display: inline-block;
+  background-color: var(--success-bg);
+  color: var(--success);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  border: 1px solid rgba(78, 133, 82, 0.2);
+}
+
+.order-success-text {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}

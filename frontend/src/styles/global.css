@@ -1,0 +1,214 @@
+:root {
+  --bg-page: #D8D5C8;
+  --bg-app: #F3EFE2;
+  --bg-surface: #FBF9F4;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #ECE6D8;
+  
+  --coral: #D9605B;
+  --coral-hover: #C54E49;
+  --coral-light: #FCEEEC;
+  
+  --dark: #231F20;
+  --dark-hover: #3A3536;
+  
+  --text-main: #231F20;
+  --text-secondary: #767064;
+  --text-muted: #9E9789;
+  
+  --border: #E5DFC9;
+  --border-light: #ECE7D8;
+  
+  --success: #4E8552;
+  --success-bg: #EEF6EF;
+  --error: #D9605B;
+  --error-bg: #FCEEEC;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 2px 8px rgba(35, 31, 32, 0.04);
+  --shadow-md: 0 8px 24px rgba(35, 31, 32, 0.08);
+  --shadow-cover: 0 10px 28px rgba(35, 31, 32, 0.16);
+  --shadow-cover-hover: 0 16px 36px rgba(35, 31, 32, 0.22);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1.5rem;
+}
+
+#root {
+  width: 100%;
+  max-width: 1320px;
+}
+
+.app-wrapper {
+  background-color: var(--bg-app);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(229, 223, 201, 0.8);
+  box-shadow: 0 16px 48px rgba(35, 31, 32, 0.08);
+  display: flex;
+  min-height: 88vh;
+  overflow: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, .font-serif {
+  font-family: 'Rufina', 'Playfair Display', Georgia, serif;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Standard Pill Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-dark {
+  background-color: var(--dark);
+  color: #FFFFFF;
+}
+
+.btn-dark:hover {
+  background-color: var(--dark-hover);
+}
+
+.btn-coral {
+  background-color: var(--coral);
+  color: #FFFFFF;
+}
+
+.btn-coral:hover {
+  background-color: var(--coral-hover);
+}
+
+.btn-outline {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  border-color: var(--dark);
+  background-color: #FFFFFF;
+}
+
+.btn-danger {
+  background-color: var(--error-bg);
+  color: var(--error);
+  border: 1px solid rgba(217, 96, 91, 0.25);
+}
+
+.btn-danger:hover {
+  background-color: var(--error);
+  color: #FFFFFF;
+}
+
+.btn-sm {
+  padding: 0.42rem 0.95rem;
+  font-size: 0.82rem;
+}
+
+/* Inputs & Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.15rem;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background-color: #FFFFFF;
+  color: var(--text-main);
+  font-size: 0.92rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--coral);
+}
+
+.error-msg {
+  background-color: var(--error-bg);
+  color: var(--error);
+  border: 1px solid rgba(217, 96, 91, 0.2);
+  padding: 0.7rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.success-msg {
+  background-color: var(--success-bg);
+  color: var(--success);
+  border: 1px solid rgba(78, 133, 82, 0.2);
+  padding: 0.7rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 0.5rem;
+  }
+  .app-wrapper {
+    flex-direction: column;
+    min-height: 100vh;
+    border-radius: var(--radius-md);
+  }
+}
