@@ -79,3 +79,9 @@ The seed script (`npm run seed`) populates 24 books across multiple genres and c
 - `sort`: `price`, `-price`, `title`, `-title`
 - `page`: Page number (default 1)
 - `limit`: Items per page (default 8, max 50)
+
+
+**## Live Demo
+
+- Frontend: https://online-bookstore-2026.netlify.app
+- Backend API: https://online-bookstore-c16k.onrender.com/books**
