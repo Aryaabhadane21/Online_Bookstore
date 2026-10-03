@@ -96,7 +96,7 @@ export default function HomePage() {
         </section>
 
         {/* 2. Popular Now */}
-        <section className="home-section-block">
+        <section className="home-popular-section">
           <div className="home-section-header">
             <h2 className="home-section-title">Popular Now</h2>
             <div className="section-dots-icon">••</div>
@@ -111,7 +111,7 @@ export default function HomePage() {
 
         {/* 3. New Series Collection */}
         {seriesBook1 && (
-          <section className="home-section-block">
+          <section className="home-series-section">
             <div className="home-section-header">
               <h2 className="home-section-title">New Series Collection</h2>
               <div className="section-dots-icon">••</div>
@@ -171,7 +171,7 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* 2. Schedule Reading */}
+        {/* 2. Schedule Reading (centered in remaining space) */}
         <section className="schedule-reading-block">
           <div className="schedule-header">
             <h3 className="schedule-title">Schedule Reading</h3>
@@ -213,48 +213,6 @@ export default function HomePage() {
                 </div>
               );
             })}
-          </div>
-        </section>
-
-        {/* 3. Reader Friends */}
-        <section className="reader-friends-block">
-          <div className="reader-friends-header">
-            <h3 className="schedule-title">Reader Friends</h3>
-            <div className="section-dots-icon">••</div>
-          </div>
-
-          <div className="reader-timeline">
-            <div className="timeline-entry">
-              <div className="timeline-marker">
-                <span className="timeline-dot"></span>
-              </div>
-              <div className="reader-avatar-circle">RS</div>
-              <div className="reader-entry-content">
-                <div className="reader-name-row">
-                  <span className="reader-name">Riya Sharma</span>
-                  <span className="reader-time">2 min ago</span>
-                </div>
-                <p className="reader-comment">
-                  Finished the second part last night. The ending was worth the wait.
-                </p>
-              </div>
-            </div>
-
-            <div className="timeline-entry">
-              <div className="timeline-marker">
-                <span className="timeline-dot"></span>
-              </div>
-              <div className="reader-avatar-circle">KM</div>
-              <div className="reader-entry-content">
-                <div className="reader-name-row">
-                  <span className="reader-name">Karan Mehta</span>
-                  <span className="reader-time">1 hr ago</span>
-                </div>
-                <p className="reader-comment">
-                  Slow start, but the last few chapters are hard to put down.
-                </p>
-              </div>
-            </div>
           </div>
         </section>
       </div>

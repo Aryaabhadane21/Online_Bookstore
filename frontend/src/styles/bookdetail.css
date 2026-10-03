@@ -1,5 +1,5 @@
 .book-detail-wrapper {
-  padding: 3.44rem 3.44rem 5rem 3.44rem;
+  padding: 3rem 3rem 4rem 3rem;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -14,7 +14,7 @@
 
 .book-detail-frame {
   width: 100%;
-  max-width: 66rem;
+  max-width: 68rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -22,20 +22,20 @@
 
 /* Upper block on --bg */
 .detail-upper-block {
-  display: grid;
-  grid-template-columns: 21rem 1fr;
-  gap: 3.5rem;
-  align-items: flex-end;
+  display: flex;
+  align-items: flex-start;
+  gap: 6rem;
   position: relative;
   z-index: 10;
-  margin-bottom: -10rem;
+  margin-bottom: 2rem;
 }
 
 /* Cover & navigation arrows */
 .detail-cover-showcase {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 10rem;
+  flex-shrink: 0;
 }
 
 .detail-nav-chevrons {
@@ -43,6 +43,7 @@
   flex-direction: column;
   gap: 1.25rem;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .chevron-icon-up {
@@ -63,7 +64,7 @@
 }
 
 .detail-large-cover-card {
-  width: 21rem;
+  width: 20rem;
   aspect-ratio: 2 / 3;
   border-radius: 3px;
   overflow: hidden;
@@ -109,8 +110,9 @@
 .detail-header-info {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding-bottom: 2.5rem;
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.5rem;
 }
 
 .detail-heading-title {
@@ -118,28 +120,44 @@
   font-weight: 400;
   line-height: 1.15;
   color: var(--text);
+  margin-bottom: 1rem;
 }
 
 .detail-heading-author {
-  font-size: 1.375rem;
+  font-size: 1.35rem;
   font-weight: 500;
   color: var(--text);
+  margin-bottom: 1.5rem;
 }
 
 .detail-tagline-text {
-  font-size: 1.19rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--muted);
-  line-height: 1.6;
-  margin: 0.5rem 0 1rem 0;
+  line-height: 1.65;
+  max-width: 32rem;
+}
+
+/* Lower Surface Card */
+.detail-lower-surface {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 2.25rem 3rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 8px 24px rgba(15, 19, 20, 0.04);
 }
 
 /* Action toolbar */
 .detail-action-toolbar {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 2.5rem;
 }
 
 .detail-order-btn {
@@ -185,20 +203,17 @@
 .detail-admin-row {
   display: flex;
   gap: 0.75rem;
-  margin-top: 0.75rem;
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
 }
 
-/* Lower Surface Card */
-.detail-lower-surface {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 12rem 3.5rem 3.5rem 3.5rem;
+/* Specs & Description Grid */
+.detail-specs-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 4rem;
-  position: relative;
-  z-index: 5;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
 }
 
 .lower-col-description {
@@ -295,13 +310,15 @@
 
 @media (max-width: 1024px) {
   .detail-upper-block {
-    grid-template-columns: 1fr;
-    margin-bottom: 2rem;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 2.5rem;
   }
 
-  .detail-lower-surface {
-    padding: 2.5rem;
+  .detail-cover-showcase {
+    gap: 3rem;
+  }
+
+  .detail-specs-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
@@ -318,6 +335,7 @@
 
   .detail-cover-showcase {
     flex-direction: column;
+    gap: 1rem;
   }
 
   .detail-large-cover-card {
@@ -327,5 +345,9 @@
 
   .detail-icon-circles-group {
     margin-left: 0;
+  }
+
+  .detail-lower-surface {
+    padding: 1.5rem;
   }
 }

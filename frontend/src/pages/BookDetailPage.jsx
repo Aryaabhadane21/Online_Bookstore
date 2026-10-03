@@ -69,9 +69,9 @@ export default function BookDetailPage() {
   return (
     <div className="book-detail-wrapper">
       <div className="book-detail-frame">
-        {/* Top Hero Section on --bg */}
+        {/* Upper Hero Section on --bg */}
         <div className="detail-upper-block">
-          {/* Cover on the left */}
+          {/* Cover & chevrons */}
           <div className="detail-cover-showcase">
             <div className="detail-nav-chevrons">
               <span className="chevron-icon-up" title="Previous">
@@ -99,7 +99,7 @@ export default function BookDetailPage() {
             </div>
           </div>
 
-          {/* Details on the right */}
+          {/* Details column: 6rem gap from cover */}
           <div className="detail-header-info">
             <h1 className="detail-heading-title">{book.title}</h1>
             <p className="detail-heading-author">{book.author}</p>
@@ -107,96 +107,100 @@ export default function BookDetailPage() {
             {firstLine && (
               <p className="detail-tagline-text">{firstLine}</p>
             )}
-
-            <div className="detail-action-toolbar">
-              {isAvailable ? (
-                <Link to={`/books/${book._id}/order`} className="btn-dark detail-order-btn">
-                  Order now ↗
-                </Link>
-              ) : (
-                <button className="btn-dark detail-order-btn" disabled>
-                  Out of stock
-                </button>
-              )}
-
-              <div className="detail-price-status-wrap">
-                <span className="detail-coral-price">₹{book.price}</span>
-                <span className="detail-stock-note">
-                  {isAvailable ? `${book.stock} in stock` : 'Out of stock'}
-                </span>
-              </div>
-
-              <div className="detail-icon-circles-group">
-                <div className="detail-circle-icon-btn" title="Bookmark">
-                  <Bookmark size={18} strokeWidth={1.5} />
-                </div>
-                <div className="detail-circle-icon-btn" title="Share">
-                  <Share2 size={18} strokeWidth={1.5} />
-                </div>
-                <div className="detail-circle-icon-btn" title="Download">
-                  <Download size={18} strokeWidth={1.5} />
-                </div>
-              </div>
-            </div>
-
-            {isAdmin && (
-              <div className="detail-admin-row">
-                <Link to={`/admin/books/${book._id}/edit`} className="btn-outline btn-sm">
-                  Edit
-                </Link>
-                <button onClick={deleteBook} className="btn-outline btn-sm" style={{ color: 'var(--coral)' }}>
-                  Delete
-                </button>
-              </div>
-            )}
           </div>
         </div>
 
         {/* Lower Surface Section */}
         <div className="detail-lower-surface">
-          {/* Left Column: Description & Review */}
-          <div className="lower-col-description">
-            <h3 className="lower-section-heading">Description</h3>
-            <p className="lower-description-body">
-              {book.description || 'No detailed description provided for this volume.'}
-            </p>
+          {/* Action Toolbar inside Surface */}
+          <div className="detail-action-toolbar">
+            {isAvailable ? (
+              <Link to={`/books/${book._id}/order`} className="btn-dark detail-order-btn">
+                Order now ↗
+              </Link>
+            ) : (
+              <button className="btn-dark detail-order-btn" disabled>
+                Out of stock
+              </button>
+            )}
 
-            <div className="lower-review-block">
-              <div className="lower-review-avatar">RJ</div>
-              <div className="lower-review-content">
-                <span className="lower-reviewer-name">Roberto Jordan</span>
-                <p className="lower-reviewer-quote">
-                  What a delightful and magical book it is! It indeed transports readers to the wizarding world.
-                </p>
+            <div className="detail-price-status-wrap">
+              <span className="detail-coral-price">₹{book.price}</span>
+              <span className="detail-stock-note">
+                {isAvailable ? `${book.stock} in stock` : 'Out of stock'}
+              </span>
+            </div>
+
+            <div className="detail-icon-circles-group">
+              <div className="detail-circle-icon-btn" title="Bookmark">
+                <Bookmark size={18} strokeWidth={1.5} />
+              </div>
+              <div className="detail-circle-icon-btn" title="Share">
+                <Share2 size={18} strokeWidth={1.5} />
+              </div>
+              <div className="detail-circle-icon-btn" title="Download">
+                <Download size={18} strokeWidth={1.5} />
               </div>
             </div>
           </div>
 
-          {/* Right Column: Specs */}
-          <div className="lower-col-specs">
-            <div className="specs-meta-item">
-              <span className="specs-item-label">Author</span>
-              <span className="specs-item-value">{book.author}</span>
+          {isAdmin && (
+            <div className="detail-admin-row">
+              <Link to={`/admin/books/${book._id}/edit`} className="btn-outline btn-sm">
+                Edit
+              </Link>
+              <button onClick={deleteBook} className="btn-outline btn-sm" style={{ color: 'var(--coral)' }}>
+                Delete
+              </button>
+            </div>
+          )}
+
+          {/* Specs & Description Grid */}
+          <div className="detail-specs-grid">
+            {/* Left Column: Description & Review */}
+            <div className="lower-col-description">
+              <h3 className="lower-section-heading">Description</h3>
+              <p className="lower-description-body">
+                {book.description || 'No detailed description provided for this volume.'}
+              </p>
+
+              <div className="lower-review-block">
+                <div className="lower-review-avatar">RJ</div>
+                <div className="lower-review-content">
+                  <span className="lower-reviewer-name">Roberto Jordan</span>
+                  <p className="lower-reviewer-quote">
+                    What a delightful and magical book it is! It indeed transports readers to the wizarding world.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="specs-meta-item">
-              <span className="specs-item-label">Genre</span>
-              <span className="specs-item-value">{book.genre}</span>
-            </div>
+            {/* Right Column: Specs */}
+            <div className="lower-col-specs">
+              <div className="specs-meta-item">
+                <span className="specs-item-label">Author</span>
+                <span className="specs-item-value">{book.author}</span>
+              </div>
 
-            <div className="specs-meta-item">
-              <span className="specs-item-label">Language</span>
-              <span className="specs-item-value">{book.language || 'English'}</span>
-            </div>
+              <div className="specs-meta-item">
+                <span className="specs-item-label">Genre</span>
+                <span className="specs-item-value">{book.genre}</span>
+              </div>
 
-            <div className="specs-meta-item">
-              <span className="specs-item-label">Paperback</span>
-              <span className="specs-item-value">
-                {book.pages ? `paper textured, full colour, ${book.pages} pages` : 'Standard edition'}
-              </span>
-              {book.isbn && (
-                <span className="specs-item-isbn">ISBN: {book.isbn}</span>
-              )}
+              <div className="specs-meta-item">
+                <span className="specs-item-label">Language</span>
+                <span className="specs-item-value">{book.language || 'English'}</span>
+              </div>
+
+              <div className="specs-meta-item">
+                <span className="specs-item-label">Paperback</span>
+                <span className="specs-item-value">
+                  {book.pages ? `paper textured, full colour, ${book.pages} pages` : 'Standard edition'}
+                </span>
+                {book.isbn && (
+                  <span className="specs-item-isbn">ISBN: {book.isbn}</span>
+                )}
+              </div>
             </div>
           </div>
         </div>
