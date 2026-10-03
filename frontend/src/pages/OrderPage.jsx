@@ -18,7 +18,7 @@ export default function OrderPage() {
     api
       .get(`/books/${id}`)
       .then((res) => setBook(res.data))
-      .catch(() => navigate('/'));
+      .catch(() => navigate('/library'));
   }, [id, navigate]);
 
   const placeOrder = async (e) => {
@@ -40,7 +40,7 @@ export default function OrderPage() {
 
   if (!book) {
     return (
-      <div className="order-page-wrapper">
+      <div className="order-page-centered">
         <p>Loading order details...</p>
       </div>
     );
@@ -50,14 +50,12 @@ export default function OrderPage() {
   const totalPrice = book.price * quantity;
 
   return (
-    <div className="order-page-wrapper">
-      <div className="order-card-panel">
-        <div className="order-card-header">
-          <h1 className="order-card-title">Place Order</h1>
-          <p className="order-card-subtitle">Review your book and confirm quantity</p>
-        </div>
+    <div className="order-page-centered">
+      <div className="order-centered-card">
+        <h1 className="order-card-title">Place Order</h1>
+        <p className="order-card-subtitle">Review your book and confirm quantity</p>
 
-        <div className="order-book-summary-box">
+        <div className="order-book-summary-row">
           <div className="order-book-cover-thumb">
             {!imgError && book.coverImage ? (
               <img
@@ -66,24 +64,24 @@ export default function OrderPage() {
                 onError={() => setImgError(true)}
               />
             ) : (
-              <div className="thumb-fallback">
+              <div className="order-thumb-fallback">
                 <span>{book.title}</span>
               </div>
             )}
           </div>
 
-          <div className="order-book-info">
-            <h3 className="order-summary-title">{book.title}</h3>
-            <p className="order-summary-author">by {book.author}</p>
-            <div className="order-summary-price">₹{book.price} per copy</div>
-            <div className={`order-summary-stock ${isAvailable ? 'stock-ok' : 'stock-out'}`}>
-              {isAvailable ? `${book.stock} copies in stock` : 'Out of stock'}
+          <div className="order-summary-text">
+            <h3 className="order-book-name">{book.title}</h3>
+            <p className="order-book-byline">by {book.author}</p>
+            <div className="order-book-unit-price">₹{book.price} per copy</div>
+            <div className={`order-book-stock-tag ${isAvailable ? 'in-stock' : 'out-stock'}`}>
+              {isAvailable ? `${book.stock} copies available` : 'Out of stock'}
             </div>
           </div>
         </div>
 
         {!success ? (
-          <form onSubmit={placeOrder} className="order-form-body">
+          <form onSubmit={placeOrder} className="order-form-controls">
             <div className="form-group">
               <label>Quantity</label>
               <input
@@ -102,32 +100,31 @@ export default function OrderPage() {
               />
             </div>
 
-            <div className="order-total-summary-row">
-              <span className="order-total-label">Total Amount:</span>
-              <span className="order-total-amount">₹{totalPrice}</span>
+            <div className="order-total-price-bar">
+              <span className="order-total-text">Total:</span>
+              <span className="order-total-val">₹{totalPrice}</span>
             </div>
 
             {error && <div className="error-msg">{error}</div>}
 
-            <div className="order-buttons-group">
+            <div className="order-btn-actions">
               <button
-                className="btn btn-dark btn-place-order"
+                className="btn-dark order-submit-btn"
                 type="submit"
                 disabled={loading || !isAvailable}
               >
                 {loading ? 'Placing order...' : 'Place Order ↗'}
               </button>
-              <Link to={`/books/${id}`} className="btn btn-outline">
+              <Link to={`/books/${id}`} className="btn-outline">
                 Cancel
               </Link>
             </div>
           </form>
         ) : (
-          <div className="order-success-screen">
-            <div className="order-success-pill">Order placed</div>
-            <p className="order-success-text">{success}</p>
-            <Link to="/" className="btn btn-dark" style={{ marginTop: '1.25rem' }}>
-              Back to Catalog
+          <div className="order-success-box">
+            <div className="success-msg">{success}</div>
+            <Link to="/library" className="btn-dark" style={{ marginTop: '1.5rem', display: 'inline-flex' }}>
+              Back to Library ↗
             </Link>
           </div>
         )}

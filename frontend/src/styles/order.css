@@ -1,55 +1,53 @@
-.order-page-wrapper {
-  padding: 3rem 3.5rem;
+.order-page-centered {
+  padding: 4rem 2rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-.order-card-panel {
-  max-width: 500px;
+.order-centered-card {
+  max-width: 34rem;
   width: 100%;
-  background-color: var(--bg-surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
-  padding: 2.25rem 2.5rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.order-card-header {
-  margin-bottom: 1.5rem;
+  background-color: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  box-shadow: 0 8px 24px rgba(15, 19, 20, 0.08);
 }
 
 .order-card-title {
-  font-size: 1.85rem;
+  font-size: 2.2rem;
+  font-weight: 400;
   margin-bottom: 0.25rem;
-  color: var(--text-main);
+  color: var(--text);
 }
 
 .order-card-subtitle {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
+  font-size: 0.94rem;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
 }
 
-.order-book-summary-box {
+.order-book-summary-row {
   display: flex;
   gap: 1.25rem;
   align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
+  background-color: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
   padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.75rem;
 }
 
 .order-book-cover-thumb {
-  width: 65px;
+  width: 6rem;
   aspect-ratio: 2 / 3;
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
-  box-shadow: var(--shadow-cover);
+  box-shadow: 0 8px 20px rgba(15, 19, 20, 0.12);
   flex-shrink: 0;
-  background-color: var(--bg-subtle);
+  background-color: var(--cream);
 }
 
 .order-book-cover-thumb img {
@@ -59,58 +57,63 @@
   display: block;
 }
 
-.thumb-fallback {
+.order-thumb-fallback {
   width: 100%;
   height: 100%;
-  background: #E6DEC8;
+  background-color: var(--cream);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem;
-  font-size: 0.65rem;
+  padding: 0.5rem;
+  font-size: 0.7rem;
   text-align: center;
-  font-weight: 700;
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
-.order-book-info {
+.order-summary-text {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
 
-.order-summary-title {
-  font-family: 'Rufina', serif;
-  font-size: 1.05rem;
-  color: var(--text-main);
+.order-book-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text);
 }
 
-.order-summary-author {
-  font-size: 0.8rem;
+.order-book-byline {
+  font-size: 0.85rem;
   font-style: italic;
-  color: var(--text-secondary);
+  color: var(--muted);
 }
 
-.order-summary-price {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-top: 0.15rem;
-}
-
-.order-summary-stock {
-  font-size: 0.75rem;
+.order-book-unit-price {
+  font-size: 0.94rem;
   font-weight: 600;
+  color: var(--coral);
+  margin-top: 0.2rem;
 }
 
-.stock-ok {
-  color: var(--success);
+.order-book-stock-tag {
+  font-size: 0.78rem;
 }
 
-.stock-out {
+.order-book-stock-tag.in-stock {
+  color: var(--muted);
+}
+
+.order-book-stock-tag.out-stock {
   color: var(--coral);
 }
 
-.order-total-summary-row {
+.order-form-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-total-price-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -120,51 +123,28 @@
   margin: 1.25rem 0;
 }
 
-.order-total-label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+.order-total-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
 }
 
-.order-total-amount {
+.order-total-val {
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--coral);
 }
 
-.order-buttons-group {
+.order-btn-actions {
   display: flex;
   gap: 0.75rem;
 }
 
-.btn-place-order {
+.order-submit-btn {
   flex: 2;
-  padding: 0.75rem;
 }
 
-.order-buttons-group .btn-outline {
-  flex: 1;
-}
-
-.order-success-screen {
+.order-success-box {
   text-align: center;
-  padding: 2rem 0;
-}
-
-.order-success-pill {
-  display: inline-block;
-  background-color: var(--success-bg);
-  color: var(--success);
-  font-size: 0.85rem;
-  font-weight: 700;
-  padding: 0.35rem 1rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 1rem;
-  border: 1px solid rgba(78, 133, 82, 0.2);
-}
-
-.order-success-text {
-  font-size: 0.95rem;
-  color: var(--text-main);
-  line-height: 1.5;
+  padding: 1rem 0;
 }

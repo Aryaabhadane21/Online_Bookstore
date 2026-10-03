@@ -30,14 +30,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="auth-view-wrapper">
-      <div className="auth-card-box">
-        <div className="auth-card-head">
-          <h1 className="auth-card-title">Sign In</h1>
-          <p className="auth-card-subtitle">Access your bookstore account</p>
-        </div>
+    <div className="auth-page-centered">
+      <div className="auth-centered-card">
+        <h1 className="auth-card-title">Sign In</h1>
+        <p className="auth-card-subtitle">Enter your details to access your account</p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="auth-form-content">
           <div className="form-group">
             <label>Email</label>
             <input
@@ -65,7 +63,7 @@ export default function LoginPage() {
           {error && <div className="error-msg">{error}</div>}
 
           <button
-            className="btn btn-dark auth-submit-btn"
+            className="btn-dark auth-submit-btn"
             type="submit"
             disabled={loading}
           >
@@ -73,7 +71,7 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <div className="auth-switch-prompt">
+        <div className="auth-footer-prompt">
           Don't have an account? <Link to="/register">Register</Link>
         </div>
       </div>

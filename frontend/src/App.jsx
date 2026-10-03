@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import LibraryPage from './pages/LibraryPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import CatalogPage from './pages/CatalogPage';
 import BookDetailPage from './pages/BookDetailPage';
 import BookFormPage from './pages/BookFormPage';
 import OrderPage from './pages/OrderPage';
@@ -27,7 +28,6 @@ function ProtectedRoute({ children, adminOnly = false }) {
 export default function App() {
   const navigate = useNavigate();
   const [user, setUser] = useState(getUser());
-  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const handleStorage = () => {
@@ -46,18 +46,14 @@ export default function App() {
   };
 
   return (
-    <div className="app-wrapper">
-      <Sidebar user={user} onLogout={handleLogout} />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-        <Header
-          user={user}
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-          onLogout={handleLogout}
-        />
-        <main style={{ flex: 1, overflowY: 'auto' }}>
+    <div className="app-panel">
+      <Sidebar />
+      <div className="app-main-layout">
+        <Header user={user} onLogout={handleLogout} />
+        <main className="app-scroll-content">
           <Routes>
-            <Route path="/" element={<CatalogPage searchQuery={searchQuery} />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/library" element={<LibraryPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />

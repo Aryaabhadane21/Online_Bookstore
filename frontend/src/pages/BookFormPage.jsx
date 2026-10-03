@@ -82,7 +82,7 @@ export default function BookFormPage() {
       } else {
         await api.post('/books', payload);
       }
-      navigate('/');
+      navigate('/library');
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to save book');
     } finally {
@@ -91,19 +91,17 @@ export default function BookFormPage() {
   };
 
   return (
-    <div className="book-form-page-wrap">
-      <div className="book-form-card">
-        <div className="book-form-header">
-          <h1 className="book-form-title">{isEdit ? 'Edit Book' : 'Add Book'}</h1>
-          <p className="book-form-subtitle">
-            {isEdit
-              ? 'Update catalog and inventory details'
-              : 'Add a new book to the catalog'}
-          </p>
-        </div>
+    <div className="book-form-page-centered">
+      <div className="book-form-centered-card">
+        <h1 className="book-form-title">{isEdit ? 'Edit Book' : 'Add Book'}</h1>
+        <p className="book-form-subtitle">
+          {isEdit
+            ? 'Update catalog and inventory details'
+            : 'Add a new book to the catalog'}
+        </p>
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
+        <form onSubmit={handleSubmit} className="book-form-layout">
+          <div className="form-group full-width">
             <label>Title *</label>
             <input
               type="text"
@@ -115,7 +113,7 @@ export default function BookFormPage() {
             />
           </div>
 
-          <div className="form-grid-2col">
+          <div className="form-two-col-row">
             <div className="form-group">
               <label>Author *</label>
               <input
@@ -141,7 +139,7 @@ export default function BookFormPage() {
             </div>
           </div>
 
-          <div className="form-grid-2col">
+          <div className="form-two-col-row">
             <div className="form-group">
               <label>Price (₹) *</label>
               <input
@@ -170,7 +168,7 @@ export default function BookFormPage() {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group full-width">
             <label>Cover Image URL</label>
             <input
               type="url"
@@ -181,7 +179,7 @@ export default function BookFormPage() {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group full-width">
             <label>Description</label>
             <textarea
               name="description"
@@ -192,7 +190,7 @@ export default function BookFormPage() {
             />
           </div>
 
-          <div className="form-grid-3col">
+          <div className="form-three-col-row">
             <div className="form-group">
               <label>Language</label>
               <input
@@ -230,9 +228,9 @@ export default function BookFormPage() {
 
           {error && <div className="error-msg">{error}</div>}
 
-          <div className="form-actions-row">
+          <div className="book-form-actions-row">
             <button
-              className="btn btn-dark"
+              className="btn-dark"
               type="submit"
               disabled={loading}
               style={{ flex: 2 }}
@@ -240,10 +238,10 @@ export default function BookFormPage() {
               {loading
                 ? 'Saving...'
                 : isEdit
-                ? 'Update Book'
-                : 'Add Book'}
+                ? 'Update Book ↗'
+                : 'Add Book ↗'}
             </button>
-            <Link to="/" className="btn btn-outline" style={{ flex: 1 }}>
+            <Link to="/library" className="btn-outline" style={{ flex: 1 }}>
               Cancel
             </Link>
           </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { ChevronUp, ChevronDown, Bookmark, Share2, Download } from 'lucide-react';
 import api from '../api/axios';
 import '../styles/bookdetail.css';
 
@@ -31,10 +32,10 @@ export default function BookDetailPage() {
   }, [id]);
 
   const deleteBook = async () => {
-    if (!window.confirm('Are you sure you want to delete this book?')) return;
+    if (!window.confirm('Delete this book from the catalog?')) return;
     try {
       await api.delete(`/books/${id}`);
-      navigate('/');
+      navigate('/library');
     } catch (err) {
       alert(err.response?.data?.error || 'Failed to delete book');
     }
@@ -42,20 +43,20 @@ export default function BookDetailPage() {
 
   if (loading) {
     return (
-      <div className="book-detail-container">
-        <p className="detail-status-text">Loading book details...</p>
+      <div className="book-detail-wrapper">
+        <p className="detail-loading-text">Loading book details...</p>
       </div>
     );
   }
 
   if (error || !book) {
     return (
-      <div className="book-detail-container">
-        <div className="detail-error-card">
+      <div className="book-detail-wrapper">
+        <div className="detail-not-found-card">
           <h2>Book Not Found</h2>
           <p>{error || 'The requested book does not exist.'}</p>
-          <Link to="/" className="btn btn-outline btn-sm" style={{ marginTop: '1rem' }}>
-            Back to Catalog
+          <Link to="/library" className="btn-outline btn-sm" style={{ marginTop: '1rem' }}>
+            Back to Library
           </Link>
         </div>
       </div>
@@ -63,100 +64,140 @@ export default function BookDetailPage() {
   }
 
   const isAvailable = book.stock > 0;
-  const firstDescriptionLine = book.description ? book.description.split('.')[0] + '.' : '';
+  const firstLine = book.description ? book.description.split('.')[0] + '.' : '';
 
   return (
-    <div className="book-detail-container">
-      {/* Top Section: Cover on Left, Header & Actions on Right */}
-      <div className="book-detail-hero">
-        <div className="detail-cover-column">
-          <div className="detail-cover-frame">
-            {!imgError && book.coverImage ? (
-              <img
-                src={book.coverImage}
-                alt={book.title}
-                className="detail-cover-image"
-                onError={() => setImgError(true)}
-              />
-            ) : (
-              <div className="detail-cover-placeholder">
-                <span className="placeholder-title">{book.title}</span>
-                <span className="placeholder-author">{book.author}</span>
+    <div className="book-detail-wrapper">
+      <div className="book-detail-frame">
+        {/* Top Hero Section on --bg */}
+        <div className="detail-upper-block">
+          {/* Cover on the left */}
+          <div className="detail-cover-showcase">
+            <div className="detail-nav-chevrons">
+              <span className="chevron-icon-up" title="Previous">
+                <ChevronUp size={16} strokeWidth={1.5} />
+              </span>
+              <span className="chevron-circle-down" title="Next">
+                <ChevronDown size={16} strokeWidth={1.5} />
+              </span>
+            </div>
+
+            <div className="detail-large-cover-card">
+              {!imgError && book.coverImage ? (
+                <img
+                  src={book.coverImage}
+                  alt={book.title}
+                  className="detail-large-cover-img"
+                  onError={() => setImgError(true)}
+                />
+              ) : (
+                <div className="detail-large-cover-placeholder">
+                  <span className="placeholder-title">{book.title}</span>
+                  <span className="placeholder-author">{book.author}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Details on the right */}
+          <div className="detail-header-info">
+            <h1 className="detail-heading-title">{book.title}</h1>
+            <p className="detail-heading-author">{book.author}</p>
+
+            {firstLine && (
+              <p className="detail-tagline-text">{firstLine}</p>
+            )}
+
+            <div className="detail-action-toolbar">
+              {isAvailable ? (
+                <Link to={`/books/${book._id}/order`} className="btn-dark detail-order-btn">
+                  Order now ↗
+                </Link>
+              ) : (
+                <button className="btn-dark detail-order-btn" disabled>
+                  Out of stock
+                </button>
+              )}
+
+              <div className="detail-price-status-wrap">
+                <span className="detail-coral-price">₹{book.price}</span>
+                <span className="detail-stock-note">
+                  {isAvailable ? `${book.stock} in stock` : 'Out of stock'}
+                </span>
+              </div>
+
+              <div className="detail-icon-circles-group">
+                <div className="detail-circle-icon-btn" title="Bookmark">
+                  <Bookmark size={18} strokeWidth={1.5} />
+                </div>
+                <div className="detail-circle-icon-btn" title="Share">
+                  <Share2 size={18} strokeWidth={1.5} />
+                </div>
+                <div className="detail-circle-icon-btn" title="Download">
+                  <Download size={18} strokeWidth={1.5} />
+                </div>
+              </div>
+            </div>
+
+            {isAdmin && (
+              <div className="detail-admin-row">
+                <Link to={`/admin/books/${book._id}/edit`} className="btn-outline btn-sm">
+                  Edit
+                </Link>
+                <button onClick={deleteBook} className="btn-outline btn-sm" style={{ color: 'var(--coral)' }}>
+                  Delete
+                </button>
               </div>
             )}
           </div>
         </div>
 
-        <div className="detail-main-info">
-          <h1 className="detail-book-title">{book.title}</h1>
-          <p className="detail-book-author">{book.author}</p>
+        {/* Lower Surface Section */}
+        <div className="detail-lower-surface">
+          {/* Left Column: Description & Review */}
+          <div className="lower-col-description">
+            <h3 className="lower-section-heading">Description</h3>
+            <p className="lower-description-body">
+              {book.description || 'No detailed description provided for this volume.'}
+            </p>
 
-          {firstDescriptionLine && (
-            <p className="detail-first-line">{firstDescriptionLine}</p>
-          )}
+            <div className="lower-review-block">
+              <div className="lower-review-avatar">RJ</div>
+              <div className="lower-review-content">
+                <span className="lower-reviewer-name">Roberto Jordan</span>
+                <p className="lower-reviewer-quote">
+                  What a delightful and magical book it is! It indeed transports readers to the wizarding world.
+                </p>
+              </div>
+            </div>
+          </div>
 
-          <div className="detail-action-bar">
-            {isAvailable ? (
-              <Link to={`/books/${book._id}/order`} className="btn btn-dark btn-order-action">
-                Order now ↗
-              </Link>
-            ) : (
-              <button className="btn btn-dark btn-order-action" disabled>
-                Out of stock
-              </button>
-            )}
+          {/* Right Column: Specs */}
+          <div className="lower-col-specs">
+            <div className="specs-meta-item">
+              <span className="specs-item-label">Author</span>
+              <span className="specs-item-value">{book.author}</span>
+            </div>
 
-            <div className="detail-price-stock-info">
-              <span className="detail-price-value">₹{book.price}</span>
-              <span className={`detail-stock-indicator ${isAvailable ? 'in-stock' : 'out-stock'}`}>
-                {isAvailable ? `${book.stock} in stock` : 'Out of stock'}
+            <div className="specs-meta-item">
+              <span className="specs-item-label">Genre</span>
+              <span className="specs-item-value">{book.genre}</span>
+            </div>
+
+            <div className="specs-meta-item">
+              <span className="specs-item-label">Language</span>
+              <span className="specs-item-value">{book.language || 'English'}</span>
+            </div>
+
+            <div className="specs-meta-item">
+              <span className="specs-item-label">Paperback</span>
+              <span className="specs-item-value">
+                {book.pages ? `paper textured, full colour, ${book.pages} pages` : 'Standard edition'}
               </span>
+              {book.isbn && (
+                <span className="specs-item-isbn">ISBN: {book.isbn}</span>
+              )}
             </div>
-          </div>
-
-          {isAdmin && (
-            <div className="detail-admin-controls">
-              <Link to={`/admin/books/${book._id}/edit`} className="btn btn-outline btn-sm">
-                Edit Book
-              </Link>
-              <button className="btn btn-danger btn-sm" onClick={deleteBook}>
-                Delete Book
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <hr className="detail-section-divider" />
-
-      {/* Two Column Details Panel */}
-      <div className="detail-specs-panel">
-        <div className="specs-col-left">
-          <h3 className="specs-section-title">Description</h3>
-          <p className="specs-description-text">
-            {book.description || 'No description available for this book.'}
-          </p>
-        </div>
-
-        <div className="specs-col-right">
-          <div className="spec-item-group">
-            <span className="spec-group-label">Genre</span>
-            <span className="spec-group-value">{book.genre}</span>
-          </div>
-
-          <div className="spec-item-group">
-            <span className="spec-group-label">Language</span>
-            <span className="spec-group-value">{book.language || 'English'}</span>
-          </div>
-
-          <div className="spec-item-group">
-            <span className="spec-group-label">Format</span>
-            <span className="spec-group-value">
-              {book.pages ? `${book.pages} pages` : 'Standard edition'}
-            </span>
-            {book.isbn && (
-              <span className="spec-group-sub">ISBN: {book.isbn}</span>
-            )}
           </div>
         </div>
       </div>

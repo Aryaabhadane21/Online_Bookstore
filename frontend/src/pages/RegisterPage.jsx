@@ -27,14 +27,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="auth-view-wrapper">
-      <div className="auth-card-box">
-        <div className="auth-card-head">
-          <h1 className="auth-card-title">Register</h1>
-          <p className="auth-card-subtitle">Create your customer account</p>
-        </div>
+    <div className="auth-page-centered">
+      <div className="auth-centered-card">
+        <h1 className="auth-card-title">Register</h1>
+        <p className="auth-card-subtitle">Create your customer account</p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="auth-form-content">
           <div className="form-group">
             <label>Full Name</label>
             <input
@@ -74,7 +72,7 @@ export default function RegisterPage() {
           {error && <div className="error-msg">{error}</div>}
 
           <button
-            className="btn btn-dark auth-submit-btn"
+            className="btn-dark auth-submit-btn"
             type="submit"
             disabled={loading}
           >
@@ -82,7 +80,7 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        <div className="auth-switch-prompt">
+        <div className="auth-footer-prompt">
           Already have an account? <Link to="/login">Sign In</Link>
         </div>
       </div>
