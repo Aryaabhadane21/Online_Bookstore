@@ -2,11 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: transparent;
-  transition: transform 0.2s ease;
-}
-
-.book-item-card:hover {
-  transform: translateY(-4px);
+  cursor: pointer;
 }
 
 .book-card-cover-wrap {
@@ -18,11 +14,7 @@
   overflow: hidden;
   box-shadow: var(--shadow-cover);
   background-color: var(--bg-subtle);
-  transition: box-shadow 0.2s ease;
-}
-
-.book-item-card:hover .book-card-cover-wrap {
-  box-shadow: var(--shadow-cover-hover);
+  cursor: pointer;
 }
 
 .book-card-cover-img {
@@ -76,10 +68,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 0.2rem;
-}
-
-.book-card-title:hover {
-  color: var(--coral);
 }
 
 .book-card-author {

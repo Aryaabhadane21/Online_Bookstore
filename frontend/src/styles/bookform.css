@@ -1,7 +1,8 @@
 .book-form-page-wrap {
-  padding: 3rem 2rem;
+  padding: 3rem 3.5rem;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .book-form-card {

@@ -50,12 +50,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 2rem 1.5rem;
+  padding: 2.25rem 3.5vw;
 }
 
 #root {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1680px;
+  margin: 0 auto;
 }
 
 .app-wrapper {
@@ -64,7 +65,8 @@ body {
   border: 1px solid rgba(229, 223, 201, 0.8);
   box-shadow: 0 16px 48px rgba(35, 31, 32, 0.08);
   display: flex;
-  min-height: 88vh;
+  min-height: calc(100vh - 4.5rem);
+  width: 100%;
   overflow: hidden;
 }
 
