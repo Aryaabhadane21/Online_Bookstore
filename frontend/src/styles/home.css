@@ -70,30 +70,31 @@
   margin-right: -3.5rem;
   z-index: 10;
   height: 10.5rem;
+  display: flex;
+  align-items: flex-end;
 }
 
 .home-hero-featured-cover {
   display: block;
   height: 100%;
-  aspect-ratio: 2 / 3;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: 0 14px 32px rgba(15, 19, 20, 0.16);
-  background-color: var(--cream);
   cursor: pointer;
 }
 
 .hero-featured-img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left bottom;
   display: block;
+  filter: drop-shadow(0 8px 16px rgba(15, 19, 20, 0.18));
 }
 
 .hero-featured-placeholder {
-  width: 100%;
   height: 100%;
+  aspect-ratio: 2 / 3;
   background-color: var(--cream);
+  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,6 +102,7 @@
   padding: 0.75rem;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 0.9rem;
+  filter: drop-shadow(0 8px 16px rgba(15, 19, 20, 0.18));
 }
 
 /* Section Headings */
@@ -124,7 +126,7 @@
   cursor: default;
 }
 
-/* Popular Now row */
+/* Popular Now */
 .home-popular-section {
   flex: 1 1 0;
   min-height: 0;
@@ -139,36 +141,53 @@
   gap: 1.25rem;
   flex: 1 1 0;
   min-height: 0;
-  align-items: stretch;
+  align-items: start;
 }
 
+/* Override card styles inside Popular Now */
 .popular-now-grid .book-card-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
   min-height: 0;
   width: 100%;
-  max-width: 9rem;
 }
 
 .popular-now-grid .book-card-cover-link {
-  flex: 1 1 0;
+  flex: 0 1 13.5rem;
   min-height: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  max-width: 9rem;
-  margin-bottom: 0.4rem;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  aspect-ratio: unset;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  background-color: transparent;
 }
 
 .popular-now-grid .book-card-img {
   height: 100%;
+  max-height: 13.5rem;
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left bottom;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(15, 19, 20, 0.18));
+}
+
+.popular-now-grid .book-card-placeholder {
+  height: 13.5rem;
   aspect-ratio: 2 / 3;
-  object-fit: cover;
-  border-radius: 3px;
+  width: auto;
   max-width: 9rem;
+  flex-shrink: 0;
+}
+
+.popular-now-grid .book-card-meta {
+  align-items: flex-start;
 }
 
 /* Series Collection */
@@ -200,12 +219,8 @@
   left: 0;
   top: 0;
   height: 4.5rem;
-  width: auto;
-  aspect-ratio: 2 / 3;
-  border-radius: 2px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(15, 19, 20, 0.1);
-  background: var(--cream);
+  display: flex;
+  align-items: flex-end;
 }
 
 .series-cover-front {
@@ -213,26 +228,27 @@
   left: 1.35rem;
   top: 0.25rem;
   height: 4.5rem;
-  width: auto;
-  aspect-ratio: 2 / 3;
-  border-radius: 2px;
-  overflow: hidden;
-  box-shadow: 0 6px 16px rgba(15, 19, 20, 0.15);
-  background: var(--cream);
+  display: flex;
+  align-items: flex-end;
 }
 
 .series-cover-back img,
 .series-cover-front img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left bottom;
   display: block;
+  filter: drop-shadow(0 4px 8px rgba(15, 19, 20, 0.16));
 }
 
-.series-placeholder {
-  width: 100%;
-  height: 100%;
+.series-cover-back .series-placeholder,
+.series-cover-front .series-placeholder {
+  height: 4.5rem;
+  aspect-ratio: 2 / 3;
   background: var(--cream);
+  border-radius: 2px;
   font-size: 0.6rem;
   display: flex;
   align-items: center;

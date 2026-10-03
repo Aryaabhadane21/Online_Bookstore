@@ -1,14 +1,18 @@
 .library-view-container {
-  padding: 3.44rem 3.44rem 4rem 3.44rem;
+  padding: 2.75rem 3.44rem 2rem 3.44rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  height: 100%;
+  min-height: 0;
+  gap: 1.5rem;
+  overflow: hidden;
 }
 
 .library-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .library-heading {
@@ -41,6 +45,7 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .lib-filter-control {
@@ -66,11 +71,14 @@
   border-color: var(--text);
 }
 
-/* Book Grid */
+/* Book Grid: fills free space between filters and pagination */
 .library-books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-  gap: 3.125rem;
+  gap: 3rem;
+  flex: 1 1 0;
+  min-height: 0;
+  align-items: start;
+  align-content: center;
 }
 
 /* Empty / Loading State */
@@ -89,14 +97,28 @@
   color: var(--text);
 }
 
-/* Pagination */
+/* Covers inside library cards: sized by available column height */
+.library-books-grid .book-card-cover-link {
+  height: 13rem;
+  flex: unset;
+}
+
+.library-books-grid .book-card-img {
+  height: 100%;
+  max-height: 13rem;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Pagination — pinned to bottom */
 .library-pagination-row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .pagination-round-btn {
@@ -125,7 +147,7 @@
 .pagination-numbers {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .page-num-btn {
@@ -136,7 +158,7 @@
   color: var(--text);
   font-family: 'Manrope', system-ui, sans-serif;
   cursor: pointer;
-  padding: 0.35rem 0.6rem;
+  padding: 0.35rem 0.55rem;
   border-radius: 4px;
 }
 
@@ -145,12 +167,29 @@
   font-weight: 700;
 }
 
+.page-ellipsis {
+  font-size: 0.94rem;
+  color: var(--muted);
+  padding: 0 0.25rem;
+  user-select: none;
+}
+
 @media (max-width: 900px) {
   .library-view-container {
+    height: auto;
+    overflow-y: visible;
     padding: 1.5rem 1.25rem 4.5rem 1.25rem;
   }
   .library-books-grid {
-    grid-template-columns: repeat(2, 1fr);
+    flex: unset;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 1.5rem;
+    align-content: start;
+  }
+  .library-books-grid .book-card-cover-link {
+    height: 11rem;
+  }
+  .library-books-grid .book-card-img {
+    max-height: 11rem;
   }
 }
